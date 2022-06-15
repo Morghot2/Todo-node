@@ -1,24 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-// import Header from "./Header";
-// import ListBody from "./ListBody";
-// import MyModal from "./Modal";
-import About from "./About";
-import AdminPanel from "./AdminPanel";
-import MainPage from "./MainPage";
+import CircularProgress from '@mui/material/CircularProgress';
 
-
-import { useGetButtonQuery } from "../redux/slices/apiSlice";
+const MainPage = React.lazy(() => import("./MainPage"));
+const About = React.lazy(() => import("./About"));
+const AdminPanel = React.lazy(() => import("./AdminPanel"));
 
 const App = () => {
-  // const { data } = useGetButtonQuery();
-
   return (
     <Routes>
-      <Route exact path="/" element={<MainPage />}></Route>
-      <Route exact path="/about" element={<About />}></Route>
-      <Route exact path="/admin" element={<AdminPanel />}></Route>
+      <Route exact path="/" element={<Suspense fallback={<CircularProgress />}><MainPage /></Suspense>}></Route>
+      <Route exact path="/about" element={<Suspense fallback={<CircularProgress />}><About /></Suspense>}></Route>
+      <Route exact path="/admin" element={<Suspense fallback={<CircularProgress />}><AdminPanel /></Suspense>}></Route>
     </Routes>
   );
 };
