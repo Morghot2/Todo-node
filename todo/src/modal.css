@@ -11,3 +11,13 @@
     border-radius: 2%;
     background-color: white;
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+.about {
+        display: flex;
+    justify-content: space-around;
+
+}

@@ -7,7 +7,6 @@ const express_1 = __importDefault(require("express"));
 const uuid_1 = require("uuid");
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
-let router = express_1.default.Router();
 const allowedOrigins = ["http://localhost:3000"];
 const options = {
     origin: allowedOrigins,

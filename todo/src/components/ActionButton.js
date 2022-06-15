@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const ActionButton = ({ position, action, userValues }) => {
-  let buttonProperties = { text: "", color: "" };
+  let buttonProperties = { text: '', color: '' };
 
   const [addUser] = useAddUserMutation();
   const [updateUser] = useUpdateUserMutation();
@@ -24,27 +24,27 @@ const ActionButton = ({ position, action, userValues }) => {
   const currentUserPosition = currentUserData?.user;
 
 
-  if (action === "delete") {
+  if (action === 'delete') {
     buttonProperties.text = <DeleteIcon />;
-    buttonProperties.color = "error";
-  } else if (data?.type === "edit") {
-    buttonProperties.text = "Update";
-    buttonProperties.color = "warning";
+    buttonProperties.color = 'error';
+  } else if (data?.type === 'edit') {
+    buttonProperties.text = 'Update';
+    buttonProperties.color = 'warning';
   } else {
-    buttonProperties.text = "Add";
-    buttonProperties.color = "success";
+    buttonProperties.text = 'Add';
+    buttonProperties.color = 'success';
   }
 
   const handleUser = () => {
-    if (action === "delete") {
+    if (action === 'delete') {
       removeUser({ position });
-    } else if (data?.type === "new") {
+    } else if (data?.type === 'new') {
       addUser(userValues);
-      changeButton({ show: !data.show, type: "" });
+      changeButton({ show: !data.show, type: '' });
 
-    } else if (data?.type === "edit") {
+    } else if (data?.type === 'edit') {
       updateUser({ userValues, currentUserPosition });
-      changeButton({ show: !data.show, type: "" });
+      changeButton({ show: !data.show, type: '' });
 
     }
   };

@@ -1,13 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import ModifyButton from "./ModifyButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 const Header = () => {
   return (
-    <div className="header">
+    <>
       <h1>User List</h1>
-      <ModifyButton action={"new"} />
-    </div>
+      <div className="header">
+        <ModifyButton action={"new"} />
+        <Link to="/about">About</Link>
+        <Link to="/admin">Adnim Panel</Link>
+      </div>
+    </>
   );
 };
 

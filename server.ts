@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 import cors from "cors";
 
 const app = express();
-let router = express.Router();
 const allowedOrigins = ["http://localhost:3000"];
 
 const options: cors.CorsOptions = {
@@ -27,7 +26,7 @@ type ButtonType = {
   type: string;
 };
 
-let users: UserType[] = [
+const users: UserType[] = [
   {
     id: "1",
     firstName: "John",
@@ -111,7 +110,7 @@ app
     res.status(201).json(currentApiUser);
   });
 
-const PORT: number = 5001;
+const PORT = 5001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
