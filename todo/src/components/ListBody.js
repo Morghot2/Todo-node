@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useGetUsersQuery } from "../redux/slices/apiSlice";
 
-import { Link as NavLink, Outlet } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -17,6 +17,7 @@ import PaginationItem from "@mui/material/PaginationItem";
 import User from "./User";
 
 const ListBody = () => {
+  let navigate = useNavigate();
   const { data } = useGetUsersQuery();
 
   const [page, setPage] = useState(0);
@@ -24,6 +25,7 @@ const ListBody = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    navigate(`${newPage}`)
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -63,16 +65,15 @@ const ListBody = () => {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          renderItem={(item) => (
-            <PaginationItem
-              component={NavLink}
-              to={`/?page=${item.page}`}
-              {...item}
-            />
-          )}
+          // renderItem={(item) => (
+          //   <PaginationItem
+          //     component={NavLink}
+          //     to={`/?page=${item.page}`}
+          //     {...item}
+          //   />
+          // )}
         />
       </TableContainer>
-      <Outlet />
     </>
   );
 };
