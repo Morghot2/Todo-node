@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Outlet
+ } from "react-router-dom";
 import Header from "./Header";
 import ListBody from "./ListBody";
 import MyModal from "./Modal";
@@ -14,6 +16,7 @@ const MainPage = (props) => {
       <Header />
       <ListBody />
       {data?.show && <MyModal />}
+      {/* <Outlet /> */}
     </>
   );
 };

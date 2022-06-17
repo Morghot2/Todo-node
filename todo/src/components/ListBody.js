@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useGetUsersQuery } from "../redux/slices/apiSlice";
 
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -11,13 +11,17 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Pagination from "@mui/material/Pagination";
 import TablePagination from "@mui/material/TablePagination";
-import PaginationItem from "@mui/material/PaginationItem";
 import User from "./User";
 
 const ListBody = () => {
   let navigate = useNavigate();
+  let location = useLocation();
+  const params = useParams();
+  // console.log(location);
+  // console.log(params);
+  // console.log(typeof parseInt(params.page))
+
   const { data } = useGetUsersQuery();
 
   const [page, setPage] = useState(0);
@@ -25,7 +29,7 @@ const ListBody = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    navigate(`${newPage}`)
+    navigate(`${newPage}`);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -33,7 +37,16 @@ const ListBody = () => {
     setPage(0);
   };
 
-  const USER_PATH = "/";
+  // if (params) {
+  //   if (parseInt(params.page) === page) {
+  //     console.log("Git")
+  //   } else {
+  //     setPage(parseInt(params.page))
+  //   }
+  // }
+  
+  console.log(page)
+  console.log(parseInt(params.page))
 
   return (
     <>
@@ -51,7 +64,7 @@ const ListBody = () => {
           </TableHead>
           <TableBody>
             {data
-              ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              ?.slice(parseInt(params.page) * rowsPerPage, parseInt(params.page) * rowsPerPage + rowsPerPage)
               .map((user) => {
                 return <User key={user.id} position={data.indexOf(user)} />;
               })}
@@ -62,16 +75,9 @@ const ListBody = () => {
           component="div"
           count={data?.length}
           rowsPerPage={rowsPerPage}
-          page={page}
+          page={parseInt(params.page)}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          // renderItem={(item) => (
-          //   <PaginationItem
-          //     component={NavLink}
-          //     to={`/?page=${item.page}`}
-          //     {...item}
-          //   />
-          // )}
         />
       </TableContainer>
     </>

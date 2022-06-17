@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Suspense fallback={<CircularProgress />}><MainPage /></Suspense>}>
-      <Route path=":page" element={<ListBody />} />
+        <Route path=":page" element={<ListBody />} />
       </Route>
       <Route exact path="/about" element={<Suspense fallback={<CircularProgress />}><About /></Suspense>}></Route>
       <Route exact path="/admin" element={<Suspense fallback={<CircularProgress />}><AdminPanel /></Suspense>}></Route>
