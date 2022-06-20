@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useGetUsersQuery } from "../redux/slices/apiSlice";
 
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -15,44 +15,24 @@ import TablePagination from "@mui/material/TablePagination";
 import User from "./User";
 
 const ListBody = () => {
+  
   let navigate = useNavigate();
-  let location = useLocation();
-  const params = useParams();
-  // console.log(location);
-  // console.log(params);
-  // console.log(typeof parseInt(params.page))
-
+  const { page } = useParams();
   const { data } = useGetUsersQuery();
 
-  const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(3);
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
     navigate(`${newPage}`);
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value));
-    setPage(0);
   };
 
-  // if (Object.keys(params).length === 0) {
-  //   setPage(0);
-  // } else {
-  //   if (parseInt(params.page) === page) {
-  //     console.log("Git");
-  //   } else {
-  //     setPage(parseInt(params.page));
-  //   }
-  // }
-
-  // console.log(page);
-  // console.log(parseInt(params.page));
-  
   useEffect(() => {
     navigate(`0`);
-  }, [])
+  }, []);
 
   return (
     <>
@@ -71,8 +51,8 @@ const ListBody = () => {
           <TableBody>
             {data
               ?.slice(
-                parseInt(params.page) * rowsPerPage,
-                parseInt(params.page) * rowsPerPage + rowsPerPage
+                parseInt(page) * rowsPerPage,
+                parseInt(page) * rowsPerPage + rowsPerPage
               )
               .map((user) => {
                 return <User key={user.id} position={data.indexOf(user)} />;
@@ -84,7 +64,7 @@ const ListBody = () => {
           component="div"
           count={data?.length}
           rowsPerPage={rowsPerPage}
-          page={parseInt(params.page)}
+          page={parseInt(page)}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
