@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useGetUsersQuery } from "../redux/slices/apiSlice";
 
@@ -37,16 +37,22 @@ const ListBody = () => {
     setPage(0);
   };
 
-  // if (params) {
+  // if (Object.keys(params).length === 0) {
+  //   setPage(0);
+  // } else {
   //   if (parseInt(params.page) === page) {
-  //     console.log("Git")
+  //     console.log("Git");
   //   } else {
-  //     setPage(parseInt(params.page))
+  //     setPage(parseInt(params.page));
   //   }
   // }
+
+  // console.log(page);
+  // console.log(parseInt(params.page));
   
-  console.log(page)
-  console.log(parseInt(params.page))
+  useEffect(() => {
+    navigate(`0`);
+  }, [])
 
   return (
     <>
@@ -64,7 +70,10 @@ const ListBody = () => {
           </TableHead>
           <TableBody>
             {data
-              ?.slice(parseInt(params.page) * rowsPerPage, parseInt(params.page) * rowsPerPage + rowsPerPage)
+              ?.slice(
+                parseInt(params.page) * rowsPerPage,
+                parseInt(params.page) * rowsPerPage + rowsPerPage
+              )
               .map((user) => {
                 return <User key={user.id} position={data.indexOf(user)} />;
               })}
