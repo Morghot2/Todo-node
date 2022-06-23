@@ -1,16 +1,26 @@
-import { render, screen } from "@testing-library/react";
-import Header from "../Header"
-import { Provider } from 'react-redux'
-import configureStore from 'redux-mock-store'
+import { render, screen, wait, cleanup } from "../../test-utils";
+import React from "react";
+import Header from "../Header";
+
+
 
 test("Does Header component has an h1 ''User List ?", () => {
-    const initialState = {output:10}
-    const mockStore = configureStore()
-    let store,wrapper
-    store = mockStore(initialState)
+  render(<Header />);
+  const headingElement = screen.getByText(/User List/i);
+  setTimeout(() => {
+    console.log("This will run after 2 second");
+    expect(headingElement).toBeInDocument();
+  }, 2000);
+});
 
-    render(<Provider store={store}><Header /></Provider>)
-    const headingElement = screen.getByText(/User List/i)
-    expect(headingElement).toBeInDocument()
-})
-
+// test("Header renders lazy", async () => {
+//   const { debug } = render(
+//     <React.Suspense fallback="Test loading">
+//       <Header />
+//     </React.Suspense>
+//   );
+//   debug();
+//   // const headingElement = screen.getByText(/User List/i);
+//   // expect(headingElement).toBeInDocument();
+//   expect(await screen.getByText(/User List/i)).toBeInDocument();
+// });
