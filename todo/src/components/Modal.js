@@ -55,7 +55,7 @@ const MyModal = () => {
           }}
         >
           {" "}
-          <Typography variant="h5">User details</Typography>
+          <Typography variant="h5" data-testid="modal-heading">User details</Typography>
           <Button
             color="error"
             size="medium"

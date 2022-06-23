@@ -13,7 +13,13 @@ test("Does Header component has an h1 ''User List ?", () => {
   }, 2000);
 });
 
-// test("Header renders lazy", async () => {
+it('renders correctly', () => {
+  const tree = render(<Header />);
+
+  expect(tree).toMatchSnapshot();
+});
+
+// test("Header renders lazy", () => {
 //   const { debug } = render(
 //     <React.Suspense fallback="Test loading">
 //       <Header />
@@ -22,5 +28,5 @@ test("Does Header component has an h1 ''User List ?", () => {
 //   debug();
 //   // const headingElement = screen.getByText(/User List/i);
 //   // expect(headingElement).toBeInDocument();
-//   expect(await screen.getByText(/User List/i)).toBeInDocument();
+//   expect(screen.getByText(/User List/i)).toBeInDocument();
 // });

@@ -9,7 +9,6 @@ import MyModal from "./Modal";
 import { useGetButtonQuery } from "../redux/slices/apiSlice";
 
 const MainPage = (props) => {
-  console.log(props)
   const { data } = useGetButtonQuery();
   return (
     <>

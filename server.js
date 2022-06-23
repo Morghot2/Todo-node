@@ -14,7 +14,7 @@ const options = {
 //Middleware for data on post-request
 app.use((0, cors_1.default)(options));
 app.use(express_1.default.json());
-let users = [
+const users = [
     {
         id: "1",
         firstName: "John",
