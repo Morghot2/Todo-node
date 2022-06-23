@@ -11,15 +11,15 @@ test("Does Modal contains 'User list heading' ?", async () => {
   const element = screen.findByTestId('dupa');
 
   await waitFor(() => {
-    expect(element.toHaveTextContext('User details'));
+    expect(element.toHaveTextContent('User details'));
   });
 
 });
-//ZOBACZYMY TERA CZEKAJ XDD
+
 // setTimeout(() => {
 //   expect(tree.findByText(/User details/i)).toBe();
 // }, 2000)
-// expect(Max).toEqual('debil') CHUJ CI DO MORDY  XDDWDOND Z MOJEGO KODU
+
 
 // global.fetch = jest.fn(() =>
 //   Promise.resolve({
