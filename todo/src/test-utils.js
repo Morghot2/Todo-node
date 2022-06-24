@@ -21,7 +21,7 @@ import usersApiReducer  from './redux/slices/apiSlice'
 //   }
   
 function render(ui, { route = '/', initialState = {} } = {}) {
-    // window.history.pushState({}, 'Test page', route);
+    window.history.pushState({}, 'Test page', route);
     const store = configureStore({ reducer: usersApiReducer, preloadedState: initialState });
 
     const Wrapper = ({ children }) => {

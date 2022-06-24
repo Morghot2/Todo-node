@@ -9,7 +9,7 @@ const About = () => {
         <Link to="/">User list</Link>
         <Link to="/admin">Adnim Panel</Link>
       </div>
-      This page is only for training purpose - React-Router linking
+      <p>There is nothing here, because it's simple app.</p>
     </>
   );
 };

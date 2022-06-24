@@ -1,4 +1,3 @@
-import MyModal from "../Modal";
 import { render, screen, wait, cleanup, act } from "../../test-utils";
 import AdminPanel from "../AdminPanel";
 import "@testing-library/jest-dom";
@@ -10,7 +9,7 @@ test("Does Admin panel has proper text?", () => {
   );
 });
 
-it("renders correctly", () => {
-  const tree = render(<AdminPanel />);
-  expect(tree).toMatchSnapshot();
-});
+// it("renders correctly", () => {
+//   const tree = render(<AdminPanel />);
+//   expect(tree).toMatchSnapshot();
+// });

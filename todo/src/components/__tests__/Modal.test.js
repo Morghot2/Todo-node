@@ -7,7 +7,7 @@ const button = {
 };
 
 test("Does Modal contains 'User list heading' ?", async () => {
-  const tree = render(<MyModal />);
+  const tree = act(() => render(<MyModal />));
   const element = screen.findByTestId('dupa');
 
   await waitFor(() => {

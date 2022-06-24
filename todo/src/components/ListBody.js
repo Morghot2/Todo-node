@@ -15,10 +15,16 @@ import TablePagination from "@mui/material/TablePagination";
 import User from "./User";
 
 const ListBody = () => {
+
+
+//Trying to mock normal method
+  // fetch('http://localhost:5001/', {
+  //   method: "GET" 
+  // }).then((response) => response.json()).then((actualData) => console.log(actualData));
   
   let navigate = useNavigate();
   const { page } = useParams();
-  const { data } = useGetUsersQuery();
+  const { data, isFetching } = useGetUsersQuery();
 
   const [rowsPerPage, setRowsPerPage] = useState(3);
 
@@ -29,10 +35,12 @@ const ListBody = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value));
   };
+  
 
   useEffect(() => {
     navigate(`0`);
   }, []);
+  if (isFetching) return "Loading"
 
   return (
     <>
