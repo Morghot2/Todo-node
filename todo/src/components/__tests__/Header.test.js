@@ -13,11 +13,11 @@ test("Does Header component has an h1 ''User List ?", () => {
   }, 2000);
 });
 
-// it('renders correctly', () => {
-//   const tree = render(<Header />);
+it('renders correctly', () => {
+  const tree = render(<Header />);
 
-//   expect(tree).toMatchSnapshot();
-// });
+  expect(tree).toMatchSnapshot();
+});
 
 // test("Header renders lazy", () => {
 //   const { debug } = render(

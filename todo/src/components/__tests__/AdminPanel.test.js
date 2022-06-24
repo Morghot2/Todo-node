@@ -9,7 +9,7 @@ test("Does Admin panel has proper text?", () => {
   );
 });
 
-// it("renders correctly", () => {
-//   const tree = render(<AdminPanel />);
-//   expect(tree).toMatchSnapshot();
-// });
+it("renders correctly", () => {
+  const tree = render(<AdminPanel />);
+  expect(tree).toMatchSnapshot();
+});

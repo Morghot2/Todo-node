@@ -71,7 +71,7 @@ test("It should have John properly displayed", async () => {
 //     ],
 //   }
   );
-  const userItem = await waitFor(screen.findByText("John"));
+  const userItem = await (screen.findByText("John"));
   setTimeout(() => {
     expect(userItem).toBeVisible();
   }, 5000);
