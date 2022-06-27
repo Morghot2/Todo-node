@@ -1,20 +1,14 @@
 import MyModal from "./helpers/MyModalTest";
 import { render, screen, wait, cleanup, act, waitFor } from "../../test-utils";
-
-const button = {
-  show: true,
-  type: "new",
-};
+import "@testing-library/jest-dom"
+import '@testing-library/jest-dom/extend-expect';
 
 test("Does Modal contains 'User list heading' ?", async () => {
   const tree = act(() => render(<MyModal />));
-  const element = screen.findByTestId('dupa');
-
-  await waitFor(() => {
-    expect(element.toHaveTextContent('User details'));
-  });
-
+  const element = await screen.findByTestId('modal-heading');
+  expect(element.toHaveTextContent('User details'));
 });
+
 
 // setTimeout(() => {
 //   expect(tree.findByText(/User details/i)).toBe();
