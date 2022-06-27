@@ -44,35 +44,34 @@ import ListBody from "../ListBody";
 // afterAll(() => server.close());
 
 test("It should have John properly displayed", async () => {
-  act(() => render(<ListBody />)
-//   , {
-//     preloadedState: [
-//       {
-//         id: "1",
-//         firstName: "John",
-//         lastName: "Doe",
-//         email: "johndoe@gmail.com",
-//         age: 27,
-//       },
-//       {
-//         id: "2",
-//         firstName: "Lech",
-//         lastName: "Nowak",
-//         email: "nowaklech@gmail.com",
-//         age: 25,
-//       },
-//       {
-//         id: "3",
-//         firstName: "Jan",
-//         lastName: "Kowalski",
-//         email: "jankowalski@gmail.com",
-//         age: 43,
-//       },
-//     ],
-//   }
+  act(
+    () => render(<ListBody />)
+    //   , {
+    //     preloadedState: [
+    //       {
+    //         id: "1",
+    //         firstName: "John",
+    //         lastName: "Doe",
+    //         email: "johndoe@gmail.com",
+    //         age: 27,
+    //       },
+    //       {
+    //         id: "2",
+    //         firstName: "Lech",
+    //         lastName: "Nowak",
+    //         email: "nowaklech@gmail.com",
+    //         age: 25,
+    //       },
+    //       {
+    //         id: "3",
+    //         firstName: "Jan",
+    //         lastName: "Kowalski",
+    //         email: "jankowalski@gmail.com",
+    //         age: 43,
+    //       },
+    //     ],
+    //   }
   );
-  const userItem = await (screen.findByText("John"));
-  setTimeout(() => {
-    expect(userItem).toBeVisible();
-  }, 5000);
+  const userItem = await screen.findByText("First Name");
+  expect(userItem).toBeVisible() 
 });
