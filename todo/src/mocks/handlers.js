@@ -32,7 +32,7 @@ export const handlers = [
   rest.get("http://localhost:5001/button", (res, req, ctx) => {
     return res(
       ctx.json({
-        show: true,
+        show: false,
         type: "new",
       }),
       ctx.delay(150)

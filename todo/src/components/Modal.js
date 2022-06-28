@@ -20,7 +20,7 @@ import "../modal.css";
 
 const MyModal = () => {
   const [changeButton] = useChangeButtonMutation();
-  const { data } = useGetButtonQuery();
+  const { data, isFetching } = useGetButtonQuery();
 
   const [userValues, setUserValues] = useState({
     id: uuidv4(),
@@ -37,6 +37,7 @@ const MyModal = () => {
       [name]: value,
     });
   };
+  if (isFetching) return "Loading"
 
   return (
     <Modal

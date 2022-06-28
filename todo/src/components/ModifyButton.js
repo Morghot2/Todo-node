@@ -11,8 +11,10 @@ import EditIcon from "@mui/icons-material/Edit";
 const ModifyButton = ({ action, position }) => {
 
   const [changeButton] = useChangeButtonMutation();
-  const { data } = useGetButtonQuery();
+  const { data, isFetching } = useGetButtonQuery();
   const [changeCurrentUser] = useChangeCurrentUserMutation();
+
+  if (isFetching) return "Loading"
 
 
   const handleButtonClick = () => {
@@ -24,14 +26,14 @@ const ModifyButton = ({ action, position }) => {
 
   if (action === "new") {
     return (
-      <Button variant="contained" onClick={handleButtonClick}>
+      <Button variant="contained" onClick={handleButtonClick} data-testid="edit-new">
         New
       </Button>
     );
   }
   if (action === "edit") {
     return (
-      <Button variant="contained" color="warning" onClick={handleButtonClick}>
+      <Button variant="contained" color="warning" onClick={handleButtonClick} data-testid="edit-new">
         <EditIcon />
       </Button>
     );

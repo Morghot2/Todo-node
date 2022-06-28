@@ -13,3 +13,4 @@ it("renders correctly", () => {
   const tree = render(<AdminPanel />);
   expect(tree).toMatchSnapshot();
 });
+

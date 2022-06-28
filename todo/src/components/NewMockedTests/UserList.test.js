@@ -1,4 +1,4 @@
-import { render, screen, wait, cleanup, act } from "../../test-utils";
+import { render, screen, waitFor, cleanup, act } from "../../test-utils";
 import ListBody from "../ListBody";
 // import { rest } from "msw";
 // import { setupServer } from "msw/node";
@@ -44,8 +44,7 @@ import ListBody from "../ListBody";
 // afterAll(() => server.close());
 
 test("It should have John properly displayed", async () => {
-  act(
-    () => render(<ListBody />)
+  act(() => render(<ListBody />)
     //   , {
     //     preloadedState: [
     //       {
@@ -75,3 +74,11 @@ test("It should have John properly displayed", async () => {
   const userItem = await screen.findByText("First Name");
   expect(userItem).toBeVisible() 
 });
+
+test("specific user displays", () => {
+    act(() => render(<ListBody />))
+    waitFor(() => {
+        const user = screen.findByText("John")
+        expect(user).toBeVisible()
+    })
+})

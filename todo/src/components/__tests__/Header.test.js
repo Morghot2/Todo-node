@@ -1,19 +1,29 @@
-import { render, screen, wait, cleanup } from "../../test-utils";
+import { render, screen, waitFor, cleanup } from "../../test-utils";
 import React from "react";
 import Header from "../Header";
-
-
+import '@testing-library/jest-dom';
 
 test("Does Header component has an h1 ''User List ?", () => {
-  render(<Header />);
-  const headingElement = screen.getByText(/User List/i);
-  setTimeout(() => {
-    console.log("This will run after 2 second");
-    expect(headingElement).toBeInDocument();
-  }, 2000);
+  // render(<Header />);
+  // const headingElement = screen.getByText(/User List/i);
+  // // setTimeout(() => {
+  // //   console.log("This will run after 2 second");
+  // //   expect(headingElement).toBeInDocument();
+  // // }, 2000);
+  // waitFor(( ) => {expect(headingElement).toBeInDocument();})
 });
 
-it('renders correctly', () => {
+test("Does Header component has an h1 ''User List ?", async () => {
+  render(<Header />);
+  const headingElement = await screen.findByText(/User List/i, );
+  // setTimeout(() => {
+  //   console.log("This will run after 2 second");
+  //   expect(headingElement).toBeInDocument();
+  // }, 2000);
+  expect(headingElement).toHaveTextContent('User List');
+});
+
+it("renders correctly", () => {
   const tree = render(<Header />);
 
   expect(tree).toMatchSnapshot();
