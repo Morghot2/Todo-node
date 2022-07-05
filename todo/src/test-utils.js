@@ -14,6 +14,7 @@ function render(ui, { route = '/', initialState = {} } = {}) {
             reducer: {
               usersApi: usersApiReducer,
             },
+            // preloadedState: null,
             middleware: (getDefaultMiddleware) =>
               getDefaultMiddleware().concat(usersApi.middleware),
             

@@ -17,11 +17,6 @@ import User from "./User";
 const ListBody = () => {
 
 
-//Trying to mock normal method
-  // fetch('http://localhost:5001/', {
-  //   method: "GET" 
-  // }).then((response) => response.json()).then((actualData) => console.log(actualData));
-  
   let navigate = useNavigate();
   const { page } = useParams();
   const { data, isFetching } = useGetUsersQuery();
@@ -35,12 +30,11 @@ const ListBody = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value));
   };
-  
 
   useEffect(() => {
     navigate(`0`);
   }, []);
-  if (isFetching) return "Loading"
+  if (isFetching) return null;
 
   return (
     <>

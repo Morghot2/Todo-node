@@ -13,6 +13,7 @@ const Header = () => {
         <ModifyButton action={"new"} />
         <Link to="/about">About</Link>
         <Link to="/admin">Adnim Panel</Link>
+        <Link to="/signin">Log in</Link>
       </div>
     </>
   );

@@ -23,8 +23,9 @@ test("Does Modal contains 'User list heading' ?", async () => {
 
     await act(async () => render(<MyModal />));
     // const element = screen.findByTestId("modal-heading");
-    expect(screen.findByTestId("modal-heading")).toBeTruthy()
+    expect(screen.findByText("User details")).toBeTruthy()
     //.toHaveTextContent("User details");
+    screen.debug()
 });
 
 // setTimeout(() => {a

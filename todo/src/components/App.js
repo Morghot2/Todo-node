@@ -7,6 +7,7 @@ const MainPage = React.lazy(() => import("./MainPage"));
 const ListBody = React.lazy(() => import("./ListBody"));
 const About = React.lazy(() => import("./About"));
 const AdminPanel = React.lazy(() => import("./AdminPanel"));
+const Login = React.lazy(() => import("./Login"));
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
       </Route>
       <Route exact path="/about" element={<Suspense fallback={<CircularProgress />}><About /></Suspense>}></Route>
       <Route exact path="/admin" element={<Suspense fallback={<CircularProgress />}><AdminPanel /></Suspense>}></Route>
+      <Route exact path="/signin" element={<Suspense fallback={<CircularProgress />}><Login /></Suspense>}></Route>
+
     </Routes>
   );
 };
